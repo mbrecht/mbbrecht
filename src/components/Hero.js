@@ -13,7 +13,7 @@ export default function Hero(props) {
     >
       <div className={styles.header}>
         <Typography variant="h2" className={styles.title}>
-          Michael Brecht
+          Michael <strong>Brecht</strong>
         </Typography>
         <Typography variant="h3" className={styles.subtitle}>
           Full Stack Software Engineer

@@ -2,20 +2,19 @@ import { projects } from "../../config";
 import Typography from "./Typography";
 import styles from "../styles/ProjectList.module.css";
 import Link from "next/link";
-import Image from "next/image";
 
-const renderProject = ({ title, description, url, img }, i) => {
+const renderProject = ({ title, url, img }, i) => {
   return (
     <div
       className={styles.project}
       key={i}
       style={{ backgroundImage: `url(${img}) ` }}
     >
-      <div className={styles.overlay}>
-        <Link href={url}>
+      <Link href={url}>
+        <div className={styles.overlay}>
           <Typography variant="h3">{title}</Typography>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 };

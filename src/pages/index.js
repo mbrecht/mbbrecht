@@ -6,9 +6,9 @@ import About from "../components/About";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Hero className={styles.hero} />
-      <ProjectList />
-      <About />
+      <Hero className={styles.hero} id="home" />
+      <ProjectList id="projects" />
+      <About id="about" />
     </div>
   );
 }

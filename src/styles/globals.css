@@ -28,6 +28,10 @@ body {
   background-color: var(--bg-darkest);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -1,3 +1,7 @@
 .typography {
   color: var(--primary);
 }
+
+.typography strong {
+  color: var(--yellow);
+}

@@ -2,7 +2,7 @@ module.exports = {
   projects: [
     {
       title: "RuneTools",
-      url: "/rune-tools",
+      url: "/rune_tools",
       img: "/capricios.png",
     },
     {
