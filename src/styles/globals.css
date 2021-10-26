@@ -14,3 +14,18 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Template definitions */
+
+body {
+  --darkest: #222733;
+  --dark: #2e3445;
+  --light: #dbe8d4;
+  --pink: #ff7b9c;
+  --yellow: #ffc759;
+
+  --bg-darkest: var(--darkest);
+  --bg-dark: var(--dark);
+  --text: var(--light);
+  --accent: var(--pink);
+}
