@@ -1,8 +1,11 @@
 .container {
-  width: 35em;
+  width: 100%;
+  max-width: 35em;
+  padding: 1em;
   text-align: center;
 }
 
 .container p {
+  overflow: auto;
   font-size: 18px;
 }
