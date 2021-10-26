@@ -2,7 +2,7 @@ module.exports = {
   projects: [
     {
       title: "RuneTools",
-      url: "https://rune-tools.vercel.app",
+      url: "/rune-tools",
       img: "/capricios.png",
     },
     {
