@@ -1,5 +1,6 @@
-/* Variable definitions */
+/* global css variables */
 body {
+  /* Colors */
   --darkest: #222733;
   --dark: #2e3445;
   --light: #dbe8d4;
@@ -10,6 +11,11 @@ body {
   --bg-dark: var(--dark);
   --primary: var(--light);
   --accent: var(--pink);
+
+  /* Fonts */
+  --font-header: "Palatino Linotype", "Hoefler Text", Times, "Times New Roman",
+    sans-serif;
+  --font-body: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
@@ -18,8 +24,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Oxygen", "Palatino Linotype", "Hoefler Text", Times,
-    "Times New Roman", sans-serif;
 
   background-color: var(--bg-darkest);
 }
@@ -31,4 +35,17 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-header);
+}
+
+p {
+  font-family: var(--font-body);
 }

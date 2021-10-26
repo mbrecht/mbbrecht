@@ -1,9 +1,16 @@
 import styles from "../styles/Hero.module.css";
+import BodyText from "./BodyText";
 import Typography from "./Typography";
 
-export default function Hero() {
+export default function Hero(props) {
   return (
-    <div className={styles.container}>
+    <div
+      {...{
+        // forwarding props
+        ...props,
+        className: `${props.className} ${styles.container}`, // add container class
+      }}
+    >
       <div className={styles.header}>
         <Typography variant="h2" className={styles.title}>
           Michael Brecht
@@ -12,6 +19,11 @@ export default function Hero() {
           Full Stack Software Engineer
         </Typography>
       </div>
+      <BodyText>
+        <Typography variant="h4" className={styles.tagline}>
+          Building a better internet
+        </Typography>
+      </BodyText>
     </div>
   );
 }

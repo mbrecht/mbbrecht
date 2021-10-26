@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+}
+
+.projectContainer {
+  display: flex;
+  column-gap: 16px;
+}
+
+.project {
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.637);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  transition: background-color 250ms ease-in-out;
+}
+
+.overlay:hover {
+  background-color: rgba(0, 0, 0, 10%);
+
+  cursor: pointer;
+}
