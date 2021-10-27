@@ -24,7 +24,7 @@ export default function About(props) {
           and self-expression, not just in the final product, but in the process
           as well. Writing maintainable, scalable, readable code is my priority
           when programming, and it results in a smoother process and easier
-          maintenence.
+          maintenance.
         </Typography>
         <Typography variant="p">
           Being a musician taught me to{" "}
