@@ -16,6 +16,11 @@ export default function Layout(props) {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         ></meta>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`}
+        ></script>
+        <script src="/gtagScript.js"></script>
       </Head>
       <Navbar />
       <div>{props.children}</div>
