@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <line style="stroke: rgb(0, 0, 0);" x1="141.765" y1="200.253" x2="101.05758509421524" y2="93.41951180221061"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="100.715" y1="93.087" x2="141.921" y2="123.717"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="179.481" y1="122.055" x2="142.216" y2="228.555" transform="matrix(-1, 0, 0, -1, 321.529999, 321.974991)"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="141.921" y1="123.717" x2="179.627" y2="93.087" transform="matrix(-1, 0, 0, -1, 321.548004, 216.804001)"/>
+</svg>
