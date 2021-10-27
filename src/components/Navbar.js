@@ -66,13 +66,13 @@ export default function Navbar(props) {
   }, []);
 
   return (
-    <div
+    <header
       {...{
         ...props,
         className: `${props.className} ${styles.container}`,
       }}
     >
       <ul className={styles.sections}>{sections.map(renderSection)}</ul>
-    </div>
+    </header>
   );
 }

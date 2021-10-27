@@ -10,6 +10,8 @@
 .projectContainer {
   display: flex;
   column-gap: 4em;
+  list-style: none;
+  padding-inline-start: 0;
 }
 
 .project {

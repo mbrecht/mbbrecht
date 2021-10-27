@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const renderProject = ({ title, url, img }, i) => {
   return (
-    <div
+    <li
       className={styles.project}
       key={i}
       style={{ backgroundImage: `url(${img}) ` }}
@@ -15,13 +15,13 @@ const renderProject = ({ title, url, img }, i) => {
           <Typography variant="h3">{title}</Typography>
         </div>
       </Link>
-    </div>
+    </li>
   );
 };
 
 export default function ProjectList(props) {
   return (
-    <div
+    <section
       {...{
         // forwarding props
         ...props,
@@ -29,9 +29,7 @@ export default function ProjectList(props) {
       }}
     >
       <Typography variant="h2">Projects I've Built:</Typography>
-      <div className={styles.projectContainer}>
-        {projects.map(renderProject)}
-      </div>
-    </div>
+      <ul className={styles.projectContainer}>{projects.map(renderProject)}</ul>
+    </section>
   );
 }

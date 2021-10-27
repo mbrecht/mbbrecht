@@ -4,7 +4,9 @@ import Typography from "./Typography";
 
 export default function About(props) {
   return (
-    <div {...{ ...props, className: `${props.className} ${styles.container}` }}>
+    <section
+      {...{ ...props, className: `${props.className} ${styles.container}` }}
+    >
       <Typography variant="h2">About Me:</Typography>
       <BodyText className={styles.body}>
         <Typography variant="p">
@@ -45,6 +47,6 @@ export default function About(props) {
           I am constantly learning and experimenting. Never bored.
         </Typography>
       </BodyText>
-    </div>
+    </section>
   );
 }

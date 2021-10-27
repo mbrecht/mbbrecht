@@ -2,7 +2,7 @@ import styles from "../styles/BodyText.module.css";
 
 export default function BodyText(props) {
   return (
-    <div
+    <section
       {...{
         ...props,
         className: `${props.className} ${styles.container}`,

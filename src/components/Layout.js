@@ -9,7 +9,8 @@ export default function Layout(props) {
   delete fProps.children;
 
   return (
-    <div {...fProps}>
+    <section {...fProps}>
+      {/* Metadata */}
       <Head>
         <title>Michael Brecht | Software Engineer</title>
         <meta
@@ -22,9 +23,11 @@ export default function Layout(props) {
         ></script>
         <script src="/gtagScript.js"></script>
       </Head>
+
+      {/* Page body */}
       <Navbar />
-      <div>{props.children}</div>
+      <section>{props.children}</section>
       <Footer />
-    </div>
+    </section>
   );
 }

@@ -4,7 +4,7 @@ import Typography from "./Typography";
 
 export default function Hero(props) {
   return (
-    <div
+    <section
       {...{
         // forwarding props
         ...props,
@@ -24,6 +24,6 @@ export default function Hero(props) {
           Building a better internet
         </Typography>
       </BodyText>
-    </div>
+    </section>
   );
 }
