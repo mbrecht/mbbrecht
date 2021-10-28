@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Typography from "../components/Typography";
 import styles from "../styles/trivia.module.css";
+import Head from "next/head";
 
 export default function Trivia() {
   const [categories, setCategories] = useState(undefined); // category data
@@ -225,5 +226,16 @@ export default function Trivia() {
       .then(({ trivia_categories }) => setCategories(trivia_categories));
   }, []);
 
-  return <section className={styles.container}>{renderModes[mode]()}</section>;
+  return (
+    <section className={styles.container}>
+      <Head>
+        <title>Trivia - Michael Brecht | Software Engineer</title>
+        <meta
+          name="description"
+          content="A fun trivia game based off the Open Trivia Database"
+        />
+      </Head>
+      <>{renderModes[mode]()}</>
+    </section>
+  );
 }
