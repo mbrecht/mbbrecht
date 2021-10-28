@@ -15,17 +15,21 @@ export default function Trivia() {
   const [questionID, setQuestionID] = useState(0); // current question index
   const [scores, setScores] = useState(undefined);
   const [showAnswers, setShowAnswers] = useState(false);
+  const [noQuestions, setNoQuestions] = useState(undefined); // true if no questions loaded
 
   const loadQuestions = async () => {
     const catQuery = category ? `&category=${category}` : "";
     const diffQuery = difficulty ? `&difficulty=${difficulty}` : "";
     const url = `https://opentdb.com/api.php?amount=10${catQuery}${diffQuery}`;
+    console.log(url);
     return fetch(url)
       .then((res) => res.json())
       .then(({ results }) => {
         setQuestions(results);
         setScores(new Array(results.length).fill(0));
         setQuestionID(0);
+        setNoQuestions(!results.length);
+        return !!results.length;
       });
   };
 
@@ -35,9 +39,9 @@ export default function Trivia() {
     return txt.value;
   };
 
-  const renderCategory = ({ name = "" }, i) => {
+  const renderCategory = ({ id, name = "" }, i) => {
     return (
-      <option key={i} value={name}>
+      <option key={i} value={id}>
         {name}
       </option>
     );
@@ -45,12 +49,12 @@ export default function Trivia() {
 
   const renderCategories = (categories) => (
     <>
-      <label htmlFor="categories">Categories: </label>
       <select
         name="categories"
         id="categories"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
+        className={styles.select}
       >
         {categories.map(renderCategory)}
       </select>
@@ -66,12 +70,12 @@ export default function Trivia() {
   };
 
   const renderQuestion = ({
-    category,
-    type,
-    difficulty,
-    question,
-    correct_answer,
-    incorrect_answers,
+    category = "",
+    type = "",
+    difficulty = "",
+    question = "",
+    correct_answer = "",
+    incorrect_answers = [],
   }) => {
     if (!answers) shuffleAnswers([correct_answer, ...incorrect_answers]);
     return (
@@ -143,13 +147,14 @@ export default function Trivia() {
     initializing: () => {
       return (
         categories && (
-          <>
+          <div className={styles.initializing}>
             <div className={styles.header}>
               {renderCategories(categories)}
               <select
                 name="difficulty"
                 id="difficulty"
                 value={difficulty}
+                className={styles.select}
                 onChange={(e) => setDifficulty(e.target.value)}
               >
                 <option value="easy">Easy</option>
@@ -160,14 +165,22 @@ export default function Trivia() {
                 // transition to next state
                 onClick={async (e) => {
                   e.preventDefault();
-                  loadQuestions().then(() => setMode("playing"));
+                  setNoQuestions(undefined);
+                  loadQuestions().then(
+                    (success) => success && setMode("playing")
+                  );
                 }}
+                className={styles.btn}
               >
                 Play
               </button>
             </div>
-            <div className={styles.body}></div>
-          </>
+            {noQuestions && (
+              <Typography>
+                Failed to load questions. Please select different options
+              </Typography>
+            )}
+          </div>
         )
       );
     },
@@ -176,7 +189,31 @@ export default function Trivia() {
     },
     ending: () => {
       return (
-        <>Total Score: {scores.reduce((total, score) => (total += score), 0)}</>
+        <div className={styles.ending}>
+          <Typography>
+            Total Score: {scores.reduce((total, score) => (total += score), 0)}
+          </Typography>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setMode("initializing");
+              // reset everything. TODO - make a reset function
+              setCategories(undefined); // category data
+              setCategory(undefined); // selected category
+              setDifficulty("easy");
+              setAnswers(undefined);
+              setAnswer(undefined); // current answer
+              setMode("initializing"); // game mode
+              setQuestionID(0); // current question index
+              setScores(undefined);
+              setShowAnswers(false);
+              setNoQuestions(undefined); // true if no questions loaded
+            }}
+            className={styles.btn}
+          >
+            Play Again
+          </button>
+        </div>
       );
     },
   };
