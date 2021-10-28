@@ -13,7 +13,7 @@ export default function Trivia() {
   const [mode, setMode] = useState("initializing"); // game mode
   const [questions, setQuestions] = useState(undefined); // question data
   const [questionID, setQuestionID] = useState(0); // current question index
-  const [scores, setScores] = useState(undefined);
+  const [score, setScore] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
   const [noQuestions, setNoQuestions] = useState(undefined); // true if no questions loaded
 
@@ -26,7 +26,7 @@ export default function Trivia() {
       .then((res) => res.json())
       .then(({ results }) => {
         setQuestions(results);
-        setScores(new Array(results.length).fill(0));
+        setScore(0);
         setQuestionID(0);
         setNoQuestions(!results.length);
         return !!results.length;
@@ -84,6 +84,9 @@ export default function Trivia() {
           <Typography>
             {category} - {difficulty}
           </Typography>
+          <Typography>
+            {score} / {questions.length}
+          </Typography>
         </div>
         <Typography>{decodeHTML(question)}</Typography>
         <div
@@ -122,13 +125,12 @@ export default function Trivia() {
               // Next question in 1.5 seconds
               setShowAnswers(true);
               setTimeout(() => {
-                let newScores = [...scores];
-                newScores[questionID] = answer === correct_answer;
                 if (questionID === questions.length - 1) {
                   setMode("ending");
                   return;
                 }
-                setScores(newScores);
+                const points = answer === correct_answer;
+                setScore(score + points);
                 setQuestionID(questionID + 1);
                 setAnswers(undefined);
                 setAnswer(undefined);
@@ -190,22 +192,20 @@ export default function Trivia() {
     ending: () => {
       return (
         <div className={styles.ending}>
-          <Typography>
-            Total Score: {scores.reduce((total, score) => (total += score), 0)}
-          </Typography>
+          <Typography>Total Score: {score}</Typography>
           <button
             onClick={(e) => {
               e.preventDefault();
               setMode("initializing");
               // reset everything. TODO - make a reset function
-              setCategories(undefined); // category data
               setCategory(undefined); // selected category
               setDifficulty("easy");
               setAnswers(undefined);
               setAnswer(undefined); // current answer
               setMode("initializing"); // game mode
               setQuestionID(0); // current question index
-              setScores(undefined);
+              setQuestions(undefined); // current question index
+              setScore(0);
               setShowAnswers(false);
               setNoQuestions(undefined); // true if no questions loaded
             }}
