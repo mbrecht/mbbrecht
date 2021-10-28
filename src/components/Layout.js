@@ -19,9 +19,10 @@ export default function Layout(props) {
         ></meta>
         <script
           async
+          defer
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`}
         ></script>
-        <script src="/gtagScript.js"></script>
+        <script defer src="/gtagScript.js"></script>
       </Head>
 
       {/* Page body */}
