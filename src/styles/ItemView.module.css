@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+
+.headline {
+  display: flex;
+}
+
+.infoPanel {
+  display: flex;
+  border: 1px solid var(--bg-dark);
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.5em;
+  min-width: 20em;
+  margin-bottom: 1em;
+}
+
+.infoHeader {
+  background-color: var(--bg-dark);
+  width: 100%;
+  padding: 0.5em 1em;
+  margin: 0;
+  text-align: center;
+}
+
+.infoData {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1em;
+  width: 100%;
+}
+
+.infoDataName {
+  text-align: right;
+  width: 45%;
+  margin: 0;
+}
+
+.infoDataValue {
+  text-align: left;
+  width: 45%;
+  margin: 0;
+}
+
+.icon {
+  margin: auto;
+}

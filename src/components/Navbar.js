@@ -31,15 +31,11 @@ export default function Navbar(props) {
           )
         }
       >
-        <Link href={`/#${section}`}>
-          <Typography
-            className={`${styles.section} ${
-              isActive[section] && styles.active
-            }`}
-          >
-            {section}
-          </Typography>
-        </Link>
+        <Typography
+          className={`${styles.section} ${isActive[section] && styles.active}`}
+        >
+          <Link href={`/#${section}`}>{section}</Link>
+        </Typography>
       </div>
     );
   };

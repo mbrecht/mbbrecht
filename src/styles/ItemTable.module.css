@@ -1,0 +1,26 @@
+.container {
+  color: var(--primary);
+  text-align: left;
+
+  width: 100%;
+  max-width: 50em;
+  margin: auto;
+}
+
+.container tr:nth-child(even) {
+  background-color: var(--bg-darkest);
+}
+.container tr:nth-child(odd) {
+  background-color: var(--bg-dark);
+}
+
+.keys {
+  background-color: var(--primary);
+}
+
+.cell {
+  padding: 1em;
+}
+
+.icon {
+}
