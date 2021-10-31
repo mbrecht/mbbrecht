@@ -4,6 +4,7 @@ import createProps from "../util/createProps";
 import Typography from "./Typography";
 import styles from "../styles/ItemView.module.css";
 import capitalizeString from "../util/capitalizeString";
+import EquipableWeapon from "./EquipableWeapon";
 
 const InfoData = ({ name, value }) => (
   <div className={styles.infoData}>
@@ -27,30 +28,16 @@ const InfoSection = ({ name, children }) => {
   );
 };
 
-const InfoHeader = ({ data }) => (
-  <div className={styles.infoSection}>
-    <Typography className={styles.infoHeader}>{data.name}</Typography>
-    <img className={styles.icon} src={`data:image/jpg;base64, ${data.icon}`} />
-    {/* <InfoData name="Released" value={data.released_date} /> */}
-    <InfoData
-      name="Released"
-      value={new Date(data.release_date).toLocaleDateString()}
-    />
-    <InfoData name="Members Item" value={data.members ? "True" : "False"} />
-    <InfoData name="Quest Item" value={data.quest_item ? "True" : "False"} />
-  </div>
-);
-
 const InfoPanel = (props) => {
   const { data } = props;
   return (
     <section {...createProps(props, { className: styles.infoPanel })}>
       <InfoSection name={data.name}>
+        <img src={`data:image/jpg;base64, ${data.icon}`} />
         <InfoData
           name="released"
           value={new Date(data.release_date).toLocaleDateString()}
         />
-        <img src={`data:image/jpg;base64, ${data.icon}`} />
         <InfoData name="members" value={data.members} />
         <InfoData name="quest item" value={data.quest_item} />
       </InfoSection>
@@ -72,7 +59,7 @@ const InfoPanel = (props) => {
         <InfoData name="cost" value={data.cost.toLocaleString()} />
         <InfoData name="high alch" value={data.highalch.toLocaleString()} />
         <InfoData name="low alch" value={data.lowalch.toLocaleString()} />
-        <InfoData name="weight" value={`${data.weight} lbs`} />
+        <InfoData name="weight" value={`${data.weight} kg`} />
       </InfoSection>
     </section>
   );
@@ -81,17 +68,14 @@ const InfoPanel = (props) => {
 export default function ItemView(props) {
   const { data } = props;
 
+  const renderBody = () => {
+    if (data.equipable_weapon) return <EquipableWeapon data={data} />;
+    else return <div />;
+  };
+
   return (
     <section {...createProps(props, { className: styles.container })}>
-      <div className={styles.body}>
-        <div className={styles.headline}>
-          <img
-            src={`data:image/jpg;base64, ${data.icon}`}
-            alt={`icon for ${data.name}`}
-          />
-          <Typography>{data.name}</Typography>
-        </div>
-      </div>
+      <div className={styles.body}>{renderBody()}</div>
       <InfoPanel data={data} />
     </section>
   );

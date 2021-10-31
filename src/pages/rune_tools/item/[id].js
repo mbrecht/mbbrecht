@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import ItemView from "../../../components/ItemView";
 import Typography from "../../../components/Typography";
 import styles from "../../../styles/RuneTools.module.css";
+import Head from "next/head";
+import capitalizeString from "../../../util/capitalizeString";
 
 export default function Page() {
   const router = useRouter();
@@ -19,7 +21,17 @@ export default function Page() {
 
   return (
     <section className={styles.container}>
-      {item.id ? <ItemView data={item} /> : <Typography>Loading...</Typography>}
+      {item.id === undefined ? (
+        <Typography>Loading...</Typography>
+      ) : (
+        <>
+          <Head>
+            <title>Rune Tools - {capitalizeString(item.name)}</title>
+          </Head>
+          <Typography className={styles.title}>{item.name}</Typography>
+          <ItemView data={item} />
+        </>
+      )}
     </section>
   );
 }

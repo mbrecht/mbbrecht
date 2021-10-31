@@ -3,6 +3,13 @@
   margin: auto;
 }
 
+.title {
+  width: 100%;
+  border-bottom: 1px solid var(--primary);
+  font-size: 32px;
+  padding-bottom: 1em;
+}
+
 @media (max-width: 900px) {
   .container {
     width: 95%;
