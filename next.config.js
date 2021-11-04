@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    GTAG_ID: process.env.GTAG_ID,
+    GTAG_ID: process.env.NEXT_PUBLIC_,
   },
 };
