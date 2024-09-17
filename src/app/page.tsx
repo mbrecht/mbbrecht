@@ -1,7 +1,7 @@
 "use client";
 
 import { canvas, scene } from "./styles";
-import { Canvas, Vector3 } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
 function Sphere() {
@@ -13,9 +13,9 @@ function Sphere() {
   );
 }
 
-function Floor({ position }: { position?: Vector3 }) {
+function Floor({ x, y, z }: { x: number; y: number; z: number }) {
   return (
-    <mesh position={position}>
+    <mesh position={[x, y, z]}>
       <planeGeometry args={[1, 1]} />
       <meshStandardMaterial color={0xffff00} />
     </mesh>
@@ -37,6 +37,7 @@ export default function Home() {
           decay={0.2}
         />
         <Sphere />
+        <OrbitControls autoRotate />
       </Canvas>
     </div>
   );
