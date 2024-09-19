@@ -3,6 +3,7 @@
 import { canvas, scene } from "./styles";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import Table from "@/components/table";
 
 function Sphere() {
   return (
@@ -37,7 +38,8 @@ export default function Home() {
           decay={0.2}
         />
         <Sphere />
-        <OrbitControls autoRotate />
+        <Table />
+        <OrbitControls />
       </Canvas>
     </div>
   );
